@@ -48,6 +48,11 @@ do
     TEAM_ID_WINNER=$($PSQL "select team_id from teams where name='$WINNER'")
     
     #' -z ': Verifica si TEAM_ID_WINNER es una cadena "vacía".
+    #Explicación:
+    #[[ -z $TEAM_ID_OPPONENT ]] se evalúa como verdadera si la cadena $TEAM_ID_OPPONENT está vacía, 
+    #lo que significa que no se encontró ningún equipo oponente con el nombre $OPPONENT en la tabla teams.
+    #Si esta condición es verdadera, significa que el equipo oponente no está presente en la tabla teams,
+    #por lo tanto, necesitamos insertarlo.
     if [[ -z $TEAM_ID_WINNER ]]
     then
       # inserta nombre team ganador.
@@ -65,6 +70,10 @@ do
     TEAM_ID_OPPONENT=$($PSQL "select team_id from teams where name='$OPPONENT'")
     
     #' -z ': Verifica si TEAM_ID_WINNER es una cadena "vacía".
+    #[[ -z $TEAM_ID_OPPONENT ]] se evalúa como verdadera si la cadena $TEAM_ID_OPPONENT está vacía, 
+    #lo que significa que no se encontró ningún equipo oponente con el nombre $OPPONENT en la tabla teams.
+    #Si esta condición es verdadera, significa que el equipo oponente no está presente en la tabla teams,
+    #por lo tanto, necesitamos insertarlo.
     if [[ -z $TEAM_ID_OPPONENT ]]
     then
 
@@ -77,8 +86,6 @@ do
         echo Insertado oponente en la tabla teams, $OPPONENT
       fi
     fi
-
-
     
     #Obtener el id del equipo ganador o oponente.
     TEAM_ID=$($PSQL "select team_id from teams where name='$WINNER' or name='$OPPONENT'")
