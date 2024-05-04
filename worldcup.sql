@@ -23,15 +23,6 @@ ALTER COLUMN team_id SET NOT NULL;
 ALTER TABLE games 
 ALTER COLUMN game_id SET NOT NULL;
 
-INSERT INTO teams (name) VALUES 
-('Argentina'), ('Brazil'), ('Germany'), ('Spain'), 
-('France'), ('Italy'), ('Uruguay'), ('England'), 
-('Netherlands'), ('Portugal'), ('Sweden'), ('Hungary'), 
-('Czech Republic'), ('Austria'), ('Switzerland'), 
-('Belgium'), ('Poland'), ('Russia'), ('Mexico'), 
-('Chile'), ('Colombia'), ('United States'), 
-('Romania'), ('Yugoslavia');
-
 --Eliminar filas de tablas
 --TRUNCATE TABLE games, teams;
 
